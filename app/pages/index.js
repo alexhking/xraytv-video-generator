@@ -7,6 +7,53 @@ import 'isomorphic-fetch'
 const env = typeof window !== 'undefined' ? window.env : process.env
 const API_HOST = env.API_HOST || 'http://localhost:4000'
 
+// CSS rules
+let formContainer = css({
+  textAlign: 'center',
+  position: 'relative',
+  top: '50%',
+  transform: 'translateY(-50%)'
+})
+let formList = css({
+  listStyleType: 'none',
+  margin: '0',
+  padding: '0',
+  display: 'inline-block',
+  '& .termField': {marginBottom: '4rem', boxSizing: 'border-box'},
+  '& .termField input': {
+    padding: '1rem',
+    fontSize: '2rem',
+    boxSizing: 'border-box',
+    height: '100%',
+    verticalAlign: 'top',
+    fontWeight: '200',
+    width: '85%',
+    borderColor: '#C1DDCC',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    borderTopLeftRadius: '4px',
+    borderBottomLeftRadius: '4px'
+  },
+  '& .termField button': {
+    color: '#2FA580',
+    borderTopRightRadius: '4px',
+    borderBottomRightRadius: '4px',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#C1DDCC',
+    background: '#F2FFF7',
+    height: '71px',
+    width: '15%',
+    position: 'relative',
+    left: '-1px',
+    verticalAlign: 'top',
+    boxSizing: 'border-box',
+    fontWeight: '600',
+    textTransform: 'uppercase'},
+  '& .rangeSelect': {float: 'left', padding: '0 2rem'},
+  '& .rangeSelect input': { display: 'block', marginBottom: '1rem' }
+})
+
 export default class extends React.Component {
   constructor(props) {
     super(props)
@@ -118,21 +165,21 @@ export default class extends React.Component {
     </video>)
   }
   form() {
-    return (<form onSubmit={this.submit.bind(this)}>
-      <ul>
-        <li>
+    return (<form className={formContainer} onSubmit={this.submit.bind(this)}>
+      <ul className={formList}>
+        <li className="termField">
           <input type="text" placeholder="type something" onChange={this.updateVal.bind(this, 'term')} value={this.state.term} />
           <button type="submit">go</button>
         </li>
-        <li>
+        <li className="rangeSelect">
           <input type="range" onChange={this.updateVal.bind(this, 'numVideos')} value={this.state.numVideos} min="2" max="200" step="1"/>
           <label>{this.state.numVideos} videos</label>
         </li>
-        <li>
+        <li className="rangeSelect">
           <input type="range" onChange={this.updateVal.bind(this, 'minLength')} value={this.state.minLength} min="50" max="3000" step="50"/>
           <label>Minimum {this.state.minLength}ms</label>
         </li>
-        <li>
+        <li className="rangeSelect">
           <input type="range" onChange={this.updateVal.bind(this, 'maxLength')} value={this.state.maxLength} min="150" max="3000" step="50"/>
           <label>Maximum {this.state.maxLength}ms</label>
         </li>

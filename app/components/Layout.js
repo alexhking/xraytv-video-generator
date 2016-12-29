@@ -1,8 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
 import 'glamor/reset'
+import css from 'next/css'
 
 const API_HOST = process.env.API_HOST
+
+css.global('html', {backgroundColor: '#EBF6EF', height: '100%'})
+css.global('html, body, #__next, .layout', {height: '100%'})
+
 
 export default (props) => (
   <div className="layout">
