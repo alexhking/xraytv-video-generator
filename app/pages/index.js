@@ -22,7 +22,7 @@ let formList = css({
   display: 'inline-block',
   '& .termField': {marginBottom: '4rem', boxSizing: 'border-box'},
   '& .termField input': {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(255, 255, 255, 0.8)',
     padding: '1rem',
     fontSize: '2rem',
     boxSizing: 'border-box',
@@ -40,6 +40,7 @@ let formList = css({
   },
   '& .termField button': {
     color: 'rgba(255, 255, 255, 0.8)',
+    transition: 'all 0.4s',
     borderTopRightRadius: '4px',
     borderBottomRightRadius: '4px',
     borderWidth: '1px',
@@ -48,10 +49,15 @@ let formList = css({
     background: 'rgba(255, 255, 255, 0.2)',
     height: '71px',
     width: '15%',
+    padding: '0',
     verticalAlign: 'top',
     boxSizing: 'border-box',
     fontWeight: '600',
-    textTransform: 'uppercase'},
+    textTransform: 'uppercase'
+  },
+  '& .termField button:hover': {
+    background: 'rgba(255, 255, 255, 0.275)'
+  },
   '& .rangeSelect': {float: 'left', padding: '0 2rem'},
   '& .rangeSelect input': { display: 'block', marginBottom: '1rem' },
   '& .rangeSelect label': { color: 'rgba(255, 255, 255, 0.8)'}
