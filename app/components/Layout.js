@@ -5,8 +5,9 @@ import css from 'next/css'
 
 const API_HOST = process.env.API_HOST
 
-css.global('html', {backgroundColor: '#EBF6EF', height: '100%'})
+css.global('html', {backgroundColor: '#262626', height: '100%'})
 css.global('html, body, #__next, .layout', {height: '100%'})
+css.global('textarea, input, button', { outline: 'none'})
 
 
 export default (props) => (

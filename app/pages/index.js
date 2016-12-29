@@ -8,11 +8,12 @@ const env = typeof window !== 'undefined' ? window.env : process.env
 const API_HOST = env.API_HOST || 'http://localhost:4000'
 
 // CSS rules
+let logo = css({
+  display: 'block',
+  margin: '0 auto'
+})
 let formContainer = css({
-  textAlign: 'center',
-  position: 'relative',
-  top: '50%',
-  transform: 'translateY(-50%)'
+  textAlign: 'center'
 })
 let formList = css({
   listStyleType: 'none',
@@ -21,6 +22,7 @@ let formList = css({
   display: 'inline-block',
   '& .termField': {marginBottom: '4rem', boxSizing: 'border-box'},
   '& .termField input': {
+    color: 'rgba(255, 255, 255, 0.7)',
     padding: '1rem',
     fontSize: '2rem',
     boxSizing: 'border-box',
@@ -28,30 +30,31 @@ let formList = css({
     verticalAlign: 'top',
     fontWeight: '200',
     width: '85%',
-    borderColor: '#C1DDCC',
+    background: 'rgba(255, 255, 255, 0.05)',
+    borderColor: 'rgba(255, 255, 255, 0.2)',
     borderStyle: 'solid',
     borderWidth: '1px',
+    borderRight: 'none',
     borderTopLeftRadius: '4px',
     borderBottomLeftRadius: '4px'
   },
   '& .termField button': {
-    color: '#2FA580',
+    color: 'rgba(255, 255, 255, 0.8)',
     borderTopRightRadius: '4px',
     borderBottomRightRadius: '4px',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: '#C1DDCC',
-    background: '#F2FFF7',
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+    background: 'rgba(255, 255, 255, 0.2)',
     height: '71px',
     width: '15%',
-    position: 'relative',
-    left: '-1px',
     verticalAlign: 'top',
     boxSizing: 'border-box',
     fontWeight: '600',
     textTransform: 'uppercase'},
   '& .rangeSelect': {float: 'left', padding: '0 2rem'},
-  '& .rangeSelect input': { display: 'block', marginBottom: '1rem' }
+  '& .rangeSelect input': { display: 'block', marginBottom: '1rem' },
+  '& .rangeSelect label': { color: 'rgba(255, 255, 255, 0.8)'}
 })
 
 export default class extends React.Component {
@@ -166,6 +169,7 @@ export default class extends React.Component {
   }
   form() {
     return (<form className={formContainer} onSubmit={this.submit.bind(this)}>
+      <img className={logo} src="/static/logo.gif" />
       <ul className={formList}>
         <li className="termField">
           <input type="text" placeholder="type something" onChange={this.updateVal.bind(this, 'term')} value={this.state.term} />
